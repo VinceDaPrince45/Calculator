@@ -99,21 +99,21 @@ for (const btn of btns) {
                 if (element == '.') {
                     counter++;
                 }
-                if (counter > 1) {
-                    displayValue.textContent = 'ERROR';
-                } else if (btn.textContent == "AC") {
-                    array = [];
-                    allNumbers = [];
-                    allOperators = [];
-                    displayValue.textContent = '';
-                    oper.textContent = '';
-                } else if (btn.textContent == "Delete") {
-                    array.pop();
-                    displayValue.textContent = array.join('');
-                } else {
+            }
+            if (counter > 1) {
+                displayValue.textContent = 'ERROR';
+            } else if (btn.textContent == "AC") {
+                array = [];
+                allNumbers = [];
+                allOperators = [];
+                displayValue.textContent = '';
+                oper.textContent = '';
+            } else if (btn.textContent == "Delete") {
+                array.pop();
                 displayValue.textContent = array.join('');
-            }
-            }
+            } else {
+            displayValue.textContent = array.join('');
+        }
         }
     });
 }
