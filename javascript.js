@@ -13,7 +13,11 @@ function multiply(num1,num2) {
 }
 
 function divide(num1,num2) {
-    result = Math.round(((num1/num2) + Number.EPSILON) * 100) / 100;
+    if (num2 == 0) {
+        result = 'L + RATIO';
+    } else {
+        result = Math.round(((num1/num2) + Number.EPSILON) * 100) / 100;
+    }
 }
 
 // create operate function that calls on arithmetic functions
