@@ -90,11 +90,14 @@ let number;
 let copyAllNumbers;
 let copyAllOperators;
 
+const oper = document.querySelector('.operator');
+
 const btns = document.querySelectorAll('button');
 for (const btn of btns) {
     btn.addEventListener('click', () => {
         if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
             operator = btn.textContent;
+            oper.textContent = btn.textContent;
             allOperators.push(operator);
             number = parseInt(array.join(''));
             allNumbers.push(number);
@@ -108,6 +111,7 @@ for (const btn of btns) {
             }
         } else if (btn.textContent == '=') {
             number = parseInt(array.join(''));
+            oper.textContent = btn.textContent;
             allNumbers.push(number) 
             array = [];
             if (allNumbers.length == 2) {
