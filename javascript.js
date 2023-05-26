@@ -81,7 +81,7 @@ const displayValue = document.querySelector('.display');
 //if delete, remove last entered input, (pop function)
 //if equal, evalulate three indexes before
 //possibly use find function to get variables for first and second number in operation
-
+//use decimal once, once = true;
 
 let array = [];
 let allNumbers = [];
