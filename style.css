@@ -1,1 +1,44 @@
+.body {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    font-family: 'Roboto';
+}
 
+.bottom {
+    display:flex;
+}
+
+.column {
+    display:flex;
+    flex-direction: column;
+    flex:auto;
+}
+
+button {
+    border: none;
+    background-color: rgb(82, 82, 82);
+    color:white;
+}
+
+.top {
+    height:100px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(161, 161, 161);
+    padding:20px;
+}
+
+.display {
+    align-self: flex-end;  
+}
+
+.header {
+    align-self: center;
+}
+
+.container {
+    width:40%;
+}
