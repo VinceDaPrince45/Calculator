@@ -1,3 +1,4 @@
+// create basic arithmetic functions
 function add(num1, num2) {
     return num1+num2;
 }
@@ -11,12 +12,10 @@ function multiply(num1,num2) {
 }
 
 function divide(num1,num2) {
-    return num1/num2
+    return num1/num2;
 }
 
-let num1;
-let num2;
-let operator;
+// create operate function that calls on arithmetic functions
 
 function operate(operator, num1, num2) {
     switch(operator) {
@@ -34,6 +33,16 @@ function operate(operator, num1, num2) {
             break;
     }
 }
+
+// link to display value
+const displayValue = document.querySelector('.display');
+
+// to get num1 and num2, create array that is assigned to variable and then deleted, create variable that contains operator, and create new array that contains number after operator
+
+
+
+
+
 
 // const clear = document.querySelector('.clear');
 // const seven = document.querySelector('.seven');
@@ -57,23 +66,34 @@ function operate(operator, num1, num2) {
 // const equal = document.querySelector('.equal');
 
 //add whatever the input is to array and evalulate after
-let array = []
+let array = [];
+let first;
+let second;
+let operator;
 
 const btns = document.querySelectorAll('button');
 for (const btn of btns) {
     btn.addEventListener('click', () => {
-        array.push(btn.textContent);
-        console.log(array);
+        if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
+            operator = btn.textContent;
+            first = parseInt(array.join(''));
+            array = [];
+            console.log(first);
+        } else if (btn.textContent == '=') {
+            second = parseInt(array.join('')); 
+            array = [];
+            console.log(second);
+            console.log(operate(operator,first,second));
+        } else {
+            array.push(btn.textContent);
+            console.log(array);
+        }
     });
 }
 
-for (const element of array) {
-    if (typeof parseInt(element) == Number) {
-        
-    }
-}
+//operate(operator,parseInt(num1.join('')),parseInt(num2.join('')))
 
-//if AC, clear whole array
+//if AC, clear whole array, let num1 and num2 be blank
 //if delete, remove last entered input, (pop function)
 //if equal, evalulate three indexes before
 //possibly use find function to get variables for first and second number in operation
