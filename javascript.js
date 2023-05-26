@@ -22,19 +22,19 @@ function operate(operator, num1, num2) {
     switch(operator) {
         case '/':
             divide(num1,num2);
-            console.log(result);
+            displayValue.textContent = result;
             break;
         case '*':
             multiply(num1,num2);
-            console.log(result);
+            displayValue.textContent = result;
             break;
         case '+':
             add(num1,num2);
-            console.log(result);
+            displayValue.textContent = result;
             break;
         case '-':
             subtract(num1,num2);
-            console.log(result)
+            displayValue.textContent = result;
             break;
     }
 }
@@ -43,11 +43,44 @@ function operate(operator, num1, num2) {
 const displayValue = document.querySelector('.display');
 
 // to get num1 and num2, create array that is assigned to variable and then deleted, create variable that contains operator, and create new array that contains number after operator
+//add whatever the input is to array and evalulate after
+let array = [];
+let first;
+let second;
+let operator;
+
+const btns = document.querySelectorAll('button');
+for (const btn of btns) {
+    btn.addEventListener('click', () => {
+        if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
+            operator = btn.textContent;
+            first = parseInt(array.join(''));
+            array = [];
+            displayValue.textContent = btn.textContent;
+        } else if (btn.textContent == '=') {
+            second = parseInt(array.join('')); 
+            array = [];
+            operate(operator,first,second);
+        } else {
+            array.push(btn.textContent);
+            displayValue.textContent = array.join('');
+        }
+    });
+}
+
+// change display value to current array/concatenation of numbers
 
 
 
 
 
+
+
+
+//if AC, clear whole array, let num1 and num2 be blank
+//if delete, remove last entered input, (pop function)
+//if equal, evalulate three indexes before
+//possibly use find function to get variables for first and second number in operation
 
 // const clear = document.querySelector('.clear');
 // const seven = document.querySelector('.seven');
@@ -69,39 +102,4 @@ const displayValue = document.querySelector('.display');
 // const subtraction = document.querySelector('.subtract');
 // const addition = document.querySelector('.add');
 // const equal = document.querySelector('.equal');
-
-//add whatever the input is to array and evalulate after
-let array = [];
-let first;
-let second;
-let operator;
-
-const btns = document.querySelectorAll('button');
-for (const btn of btns) {
-    btn.addEventListener('click', () => {
-        if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
-            operator = btn.textContent;
-            first = parseInt(array.join(''));
-            array = [];
-            console.log(first);
-        } else if (btn.textContent == '=') {
-            second = parseInt(array.join('')); 
-            array = [];
-            console.log(second);
-            operate(operator,first,second);
-        } else {
-            array.push(btn.textContent);
-            console.log(array);
-        }
-    });
-}
-
-
-
-//if AC, clear whole array, let num1 and num2 be blank
-//if delete, remove last entered input, (pop function)
-//if equal, evalulate three indexes before
-//possibly use find function to get variables for first and second number in operation
-
-
 
