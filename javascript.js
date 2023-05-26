@@ -1,18 +1,19 @@
 // create basic arithmetic functions
+let result;
 function add(num1, num2) {
-    return num1+num2;
+    result = num1+num2;
 }
 
 function subtract(num1, num2) {
-    return num1-num2;
+    result = num1-num2;
 }
 
 function multiply(num1,num2) {
-    return num1*num2;
+    result = num1*num2;
 }
 
 function divide(num1,num2) {
-    return num1/num2;
+    result = num1/num2;
 }
 
 // create operate function that calls on arithmetic functions
@@ -21,15 +22,19 @@ function operate(operator, num1, num2) {
     switch(operator) {
         case '/':
             divide(num1,num2);
+            console.log(result);
             break;
         case '*':
             multiply(num1,num2);
+            console.log(result);
             break;
         case '+':
             add(num1,num2);
+            console.log(result);
             break;
         case '-':
             subtract(num1,num2);
+            console.log(result)
             break;
     }
 }
@@ -83,7 +88,7 @@ for (const btn of btns) {
             second = parseInt(array.join('')); 
             array = [];
             console.log(second);
-            console.log(operate(operator,first,second));
+            operate(operator,first,second);
         } else {
             array.push(btn.textContent);
             console.log(array);
@@ -91,7 +96,7 @@ for (const btn of btns) {
     });
 }
 
-//operate(operator,parseInt(num1.join('')),parseInt(num2.join('')))
+
 
 //if AC, clear whole array, let num1 and num2 be blank
 //if delete, remove last entered input, (pop function)
