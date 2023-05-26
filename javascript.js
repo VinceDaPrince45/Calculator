@@ -53,12 +53,6 @@ const displayValue = document.querySelector('.display');
 // may need to change num1 and num2 into more arbitrary values in a array of inputted numbers
 // this will allow for operations on many numbers
 
-//if AC, clear whole array, let num1 and num2 be blank
-//if delete, remove last entered input, (pop function)
-//if equal, evalulate three indexes before
-//possibly use find function to get variables for first and second number in operation
-//use decimal once, once = true;
-
 let array = [];
 let allNumbers = [];
 let allOperators = [];
@@ -93,7 +87,10 @@ for (const btn of btns) {
             array = [];
             if (allNumbers.length == 2) {
                 operate(operator,allNumbers[0],allNumbers[1]);
-            array = [result];
+                array = [result];
+            } else if (allNumbers.length < 2) {
+                array = [];
+                allNumbers = [];
             }
         } else {
             array.push(btn.textContent);
@@ -104,6 +101,15 @@ for (const btn of btns) {
                 }
                 if (counter > 1) {
                     displayValue.textContent = 'ERROR';
+                } else if (btn.textContent == "AC") {
+                    array = [];
+                    allNumbers = [];
+                    allOperators = [];
+                    displayValue.textContent = '';
+                    oper.textContent = '';
+                } else if (btn.textContent == "Delete") {
+                    array.pop();
+                    displayValue.textContent = array.join('');
                 } else {
                 displayValue.textContent = array.join('');
             }
@@ -111,3 +117,10 @@ for (const btn of btns) {
         }
     });
 }
+
+//if AC, clear whole array, let num1 and num2 be blank
+//if delete, remove last entered input, (pop function)
+//if equal, evalulate three indexes before
+//possibly use find function to get variables for first and second number in operation
+//use decimal once, once = true;
+
