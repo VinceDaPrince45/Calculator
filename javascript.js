@@ -45,30 +45,29 @@ const displayValue = document.querySelector('.display');
 // to get num1 and num2, create array that is assigned to variable and then deleted, create variable that contains operator, and create new array that contains number after operator
 // add whatever the input is to array and evalulate after
 // change display value to current array/concatenation of numbers
-let array = [];
-let numbersAndOperations = [];
-let first;
-let second;
-let operator;
+// let array = [];
+// let first;
+// let second;
+// let operator;
 
-const btns = document.querySelectorAll('button');
-for (const btn of btns) {
-    btn.addEventListener('click', () => {
-        if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
-            operator = btn.textContent;
-            first = parseInt(array.join(''));
-            array = [];
-            displayValue.textContent = btn.textContent;
-        } else if (btn.textContent == '=') {
-            second = parseInt(array.join('')); 
-            array = [];
-            operate(operator,first,second);
-        } else {
-            array.push(btn.textContent);
-            displayValue.textContent = array.join('');
-        }
-    });
-}
+// const btns = document.querySelectorAll('button');
+// for (const btn of btns) {
+//     btn.addEventListener('click', () => {
+//         if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
+//             operator = btn.textContent;
+//             first = parseInt(array.join(''));
+//             array = [];
+//             displayValue.textContent = btn.textContent;
+//         } else if (btn.textContent == '=') {
+//             second = parseInt(array.join('')); 
+//             array = [];
+//             operate(operator,first,second);
+//         } else {
+//             array.push(btn.textContent);
+//             displayValue.textContent = array.join('');
+//         }
+//     });
+// }
 
 // may need to change num1 and num2 into more arbitrary values in a array of inputted numbers
 // this will allow for operations on many numbers
@@ -83,24 +82,37 @@ for (const btn of btns) {
 //if equal, evalulate three indexes before
 //possibly use find function to get variables for first and second number in operation
 
-// const clear = document.querySelector('.clear');
-// const seven = document.querySelector('.seven');
-// const four = document.querySelector('.four');
-// const one = document.querySelector('.one');
-// const enlarge = document.querySelector('.enlarge');
-// const dlt = document.querySelector('.delete');
-// const eight = document.querySelector('.eight');
-// const five = document.querySelector('.five');
-// const two = document.querySelector('.two');
-// const zero = document.querySelector('.zero');
-// const percent = document.querySelector('.percent');
-// const nine = document.querySelector('.nine');
-// const six = document.querySelector('.six');
-// const three = document.querySelector('.three');
-// const decimal = document.querySelector('.decimal');
-// const division = document.querySelector('.divide');
-// const multiplication = document.querySelector('.multiply');
-// const subtraction = document.querySelector('.subtract');
-// const addition = document.querySelector('.add');
-// const equal = document.querySelector('.equal');
 
+let array = [];
+let allNumbers = [];
+let allOperators = [];
+let number;
+
+const btns = document.querySelectorAll('button');
+for (const btn of btns) {
+    btn.addEventListener('click', () => {
+        if (btn.textContent == '+' || btn.textContent == '-' || btn.textContent == '*' || btn.textContent == '/') {
+            operator = btn.textContent;
+            allOperators.push(operator);
+            number = parseInt(array.join(''));
+            allNumbers.push(number);
+            array = [];
+            displayValue.textContent = btn.textContent;
+        } else if (btn.textContent == '=') {
+            number = parseInt(array.join(''));
+            allNumbers.push(number) 
+            array = [];
+            if (allNumbers.length == 2) {
+                operate(operator,first,second);
+            } else if (allNumbers.length > 2) {
+                for (let i = 0; i < allOperators.length; i++) {
+                    operate(allOperators[i], allNumbers[0], allNumbers[1]);
+                    allNumbers.splice(0,2,result);
+                }
+            }
+        } else {
+            array.push(btn.textContent);
+            displayValue.textContent = array.join('');
+        }
+    });
+}
