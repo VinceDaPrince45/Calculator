@@ -87,6 +87,8 @@ let array = [];
 let allNumbers = [];
 let allOperators = [];
 let number;
+let copyAllNumbers;
+let copyAllOperators;
 
 const btns = document.querySelectorAll('button');
 for (const btn of btns) {
@@ -97,18 +99,20 @@ for (const btn of btns) {
             number = parseInt(array.join(''));
             allNumbers.push(number);
             array = [];
-            displayValue.textContent = btn.textContent;
+            if (allOperators.length > 1) {
+                copyAllNumbers = allNumbers;
+                copyAllOperators = allOperators;
+                operate(copyAllOperators[0],copyAllNumbers[0],copyAllNumbers[1]);
+                copyAllNumbers.shift();
+                copyAllNumbers.splice(0,2,result);
+            }
         } else if (btn.textContent == '=') {
             number = parseInt(array.join(''));
             allNumbers.push(number) 
             array = [];
             if (allNumbers.length == 2) {
-                operate(operator,first,second);
-            } else if (allNumbers.length > 2) {
-                for (let i = 0; i < allOperators.length; i++) {
-                    operate(allOperators[i], allNumbers[0], allNumbers[1]);
-                    allNumbers.splice(0,2,result);
-                }
+                operate(operator,allNumbers[0],allNumbers[1]);
+            array = [result];
             }
         } else {
             array.push(btn.textContent);
