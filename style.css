@@ -56,3 +56,8 @@ button {
     display: flex;
     flex-direction: column;
 }
+
+.operator {
+    text-align: right;
+    font-size:15px;
+}
