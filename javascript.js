@@ -43,8 +43,10 @@ function operate(operator, num1, num2) {
 const displayValue = document.querySelector('.display');
 
 // to get num1 and num2, create array that is assigned to variable and then deleted, create variable that contains operator, and create new array that contains number after operator
-//add whatever the input is to array and evalulate after
+// add whatever the input is to array and evalulate after
+// change display value to current array/concatenation of numbers
 let array = [];
+let numbersAndOperations = [];
 let first;
 let second;
 let operator;
@@ -68,9 +70,8 @@ for (const btn of btns) {
     });
 }
 
-// change display value to current array/concatenation of numbers
-
-
+// may need to change num1 and num2 into more arbitrary values in a array of inputted numbers
+// this will allow for operations on many numbers
 
 
 
