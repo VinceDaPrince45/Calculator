@@ -59,7 +59,6 @@ let allOperators = [];
 let number;
 let copyAllNumbers;
 let copyAllOperators;
-let counter = 0;
 
 const oper = document.querySelector('.operator');
 
@@ -94,26 +93,30 @@ for (const btn of btns) {
             }
         } else {
             array.push(btn.textContent);
+            let counter = 0;
             for (const element of array) {
                 if (element == '.') {
                     counter++;
                 }
+            }
                 if (counter > 1) {
                     displayValue.textContent = 'ERROR';
-                } else if (btn.textContent == "AC") {
+                } else {
+                    displayValue.textContent = array.join('');
+                }
+                if (btn.textContent == "AC") {
                     array = [];
                     allNumbers = [];
                     allOperators = [];
                     displayValue.textContent = '';
                     oper.textContent = '';
-                } else if (btn.textContent == "Delete") {
+                    counter = 0;
+                }
+                if (btn.textContent == "Delete") {
                     array.pop();
                     displayValue.textContent = array.join('');
-                } else {
-                displayValue.textContent = array.join('');
+                }
             }
-            }
-        }
     });
 }
 
